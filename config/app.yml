@@ -1,0 +1,30 @@
+all:
+
+  # Example app.yml config for sfPokaYoke
+  pokayoke:
+    # Turn PokaYoke on and off
+    on: true
+    # Turn on the debuging this will cause alerts at each validation action
+    debug: false
+    # Event hooks - validation called on both field blur and form submit
+    validate_onblur: true
+    validateon_submit: true
+    
+    # Define which events should display the inline and global form errors
+    display_inline_onblur: true
+    display_inline_onsubmit: false
+    display_global_onblur: false
+    display_global_onsubmit: false
+      
+    # Inline error id="error_for(_name)" and class="form_error"
+    inline_id_prefix: error_for_
+    inline_class: form_error
+    
+    # <li class="form_error"></li> the global error lost class
+    global_class: form_error
+    # The text used to introduce the global errors list
+    global_title: 'The following form information has been completed but it contains errors:'
+    global_titleclass: pkyk_global_title
+    
+    # Add an onClick event to the items in the global list - click to focus the field with the error
+    global_onclick_focus: true;

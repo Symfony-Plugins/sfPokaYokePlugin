@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.4.9" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>sfPokaYokePlugin</name>
+ <channel>pear.symfony-project.com</channel>
+ <summary>sfPokaYoke (pronounced with the e on the end e.g. poka-yoki). Simply put it is the use of simple mechanisms that stop mistakes being made. 
+ sfPokaYoke provides client-side form validation based on existing .yml validation files. This validator will provide inline errors on blur events and listed errors once the form is submitted.</summary>
+ <description>Configurable client-side form validation.</description>
+ <lead>
+  <name>Alistair Stead</name>
+  <user>Alistair.Stead</user>
+  <email>threethirdsfull@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2007-09-07</date>
+ <time>09:32:00</time>
+ <version>
+  <release>0.1.7</release>
+  <api>0.1.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.symfony-project.com/license">MIT license</license>
+ <notes>-</notes>
+ <contents>
+  <dir name="/">
+   <file name="lib/sfPokaYokeConfigHandler.class.php" role="data" />
+   <file name="lib/sfPokaYokeFilter.class.php" role="data" />
+   <file name="web/js/pkykValidator.js" role="data" />
+   <file name="config/app.yml" role="data" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.1.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.1</min>
+   </pearinstaller>
+   <package>
+    <name>symfony</name>
+    <channel>pear.symfony-project.com</channel>
+    <min>0.8.1</min>
+    <max>1.1.0</max>
+    <exclude>1.1.0</exclude>
+   </package>
+  </required>
+ </dependencies>
+ <phprelease />
+ <changelog>Updated to allow multiple forms in one view.</changelog>
+</package>

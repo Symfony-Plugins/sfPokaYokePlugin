@@ -1,0 +1,90 @@
+= sfPokaYoke plugin =
+
+The `sfPokaYokePlugin` (pronounced with the e on the end e.g. poka-yoki). 
+Simply put it is the use of simple mechanisms that stop mistakes being made.  
+sfPokaYoke provides client-side form validation based on existing `action.yml` validation files. 
+This validator will provide inline errors on blur events and listed errors once the form is submitted.
+
+This plugin was built after reading "Designing the Obvious" by Robert Hoekman, jr. and working with a number of unsatisfactory 
+validation libraries. It is intended that this plugin will allow you to configure the validation and feedback to make your forms
+poka yoke devices i.e. impossible for users to make any errors while entering data.
+
+Thanks to Alon Noy for the validators!
+The following validators are implemented in the plugin:
+
+    * sfStringValidator
+    * sfNumberValidator
+    * sfRegexValidator
+    * sfEmailValidator
+    * sfCompareValidator 
+
+== Installation ==
+
+  * Install the plugin
+  
+  {{{
+    symfony plugin-install http://plugins.symfony-project.com/sfPokaYokePlugin
+  }}}
+  
+  * Add the sfPokaYoke filter to your app filters.yml
+  
+  {{{
+     rendering: ~
+     web_debug: ~
+     security: ~
+
+     # generally, you will want to insert your own filters here
+
+     poka_yoke:
+  	class: sfPokaYokeFilter
+       
+     cache:     ~
+     common:    ~
+     flash:     ~
+     execution: ~
+  }}}
+  
+  * Clear you cache
+  
+  {{{
+    symfony cc
+  }}}
+
+  * You're done. Any forms that have validation rules will have client-side rules applied too.
+
+== Usage Example ==
+
+Once any validation rules are applied to the actions for your form rules will be created for the client-side validation.
+
+As a user enters data into the form and the form input looses focus it will be validated. If the input value fails any validation rules that error will be inserted next to the input.
+
+You do not need to add any `<div>` or `<span>` tags to capture these in-line errors unless you have a specific location in you form markup where you wish the error to be displayed.
+
+Once you add a `<span>` into which you wish to add the error string sfPokaYoke will use that tag to display the error.
+
+  {{{
+      <input name="password" id="password" value="" type="password">     
+      <span id="forgot-password"><a class="form-link" href="/symflex_dev.php/password.html">Forgot your username/password?</a></span>
+
+      // if you wish to define where inline errors should display - insert a span with and id=pkyk_fieldname
+      <span id="pkyk_password" class="error"></span>
+  }}}
+
+On form submission a list of all error is inserted as the first child of the form. Each listed error item has an onclick event attached to allow the user to click on the error to focus the form field and resolve the problem.
+
+  {{{
+      <ul id="pkykGlobalErrors">
+         <li class="globalErrorTitle">The following form information has been completed but it contains errors:</li>
+         <li class="errors" id="pkykGlobal_username">Please enter your username.</li>
+         <li class="errors" id="pkykGlobal_password">Please enter your password.</li>
+      </ul>
+  }}}
+
+As each input error is corrected by the user the in-line and list errors are removed.
+  
+== TODO ==
+ 	
+ 	  * integrate config parameters for validation rules.
+ 	  * add additional validators.
+ 	  * add a valid icon when a field passes validation.
+ 	  * provide examples to extend validators for javascript callback options.
